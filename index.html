@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby Tamannu 💗</title>
+<style>
+* { box-sizing:border-box; }
+body {
+ margin:0;
+ min-height:100vh;
+ font-family:'Trebuchet MS',sans-serif;
+ background:linear-gradient(135deg,#ffe1ed,#fff0f5,#fbd4e5);
+ color:#a33c68;
+ text-align:center;
+ overflow-x:hidden;
+}
+.card {
+ width:90%;
+ max-width:430px;
+ margin:65px auto;
+ padding:30px 22px;
+ background:rgba(255,255,255,.78);
+ border:1px solid white;
+ border-radius:28px;
+ box-shadow:0 12px 35px #d889aa40;
+ position:relative;
+ z-index:2;
+}
+h1 {font-size:30px;color:#e45c91;}
+h2 {color:#df6092;}
+p {line-height:1.8;font-size:16px;}
+.heart {font-size:65px;animation:beat 1s infinite;}
+button {
+ border:0;
+ padding:14px 23px;
+ border-radius:30px;
+ background:#ed76a6;
+ color:white;
+ font-size:16px;
+ font-weight:bold;
+ margin:8px;
+ cursor:pointer;
+ box-shadow:0 5px 12px #e98aaf55;
+}
+button:active {transform:scale(.96);}
+.secondary {background:#f5b6ce;color:#994267;}
+.hidden {display:none;}
+#surprise {animation:fade 1s;}
+.floating {
+ position:fixed;
+ bottom:-30px;
+ animation:float 7s linear infinite;
+ opacity:.7;
+ z-index:1;
+ pointer-events:none;
+}
+@keyframes beat {
+ 50% {transform:scale(1.15);}
+}
+@keyframes float {
+ to {transform:translateY(-110vh) rotate(360deg);opacity:0;}
+}
+@keyframes fade {
+ from {opacity:0;transform:translateY(15px);}
+ to {opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="main">
+ <div class="heart">💗</div>
+ <h1>Hey, My Baby Tamannu!</h1>
+ <p>I made a little something just for you...</p>
+ <p>Will you give me a moment of your time? 🥺</p>
+ <button onclick="openLetter()">Open My Letter 💌</button>
+</div>
+
+<div class="card hidden" id="letter">
+ <div class="heart">🧸</div>
+ <h1>I'm Really Sorry</h1>
+ <p>
+ My Baby Tamannu,<br><br>
+ I know I may have hurt you, and I genuinely feel sorry.
+ I don't want my ego or my mistakes to become bigger
+ than the bond we share.<br><br>
+ You are special to me, and I never wanted to make
+ you feel bad.<br><br>
+ I'm not asking you to forget everything instantly.
+ I just want a chance to make things better through
+ my actions, not just my words.<br><br>
+ I'm truly sorry, my baby. 💗
+ </p>
+ <button onclick="showQuestion()">One Last Thing... 🥺</button>
+</div>
+
+<div class="card hidden" id="question">
+ <div class="heart">🥹</div>
+ <h2>Can I Have Your Forgiveness?</h2>
+ <p>I promise to listen, understand and do better.</p>
+ <button onclick="forgiven()">Yes 💗</button>
+ <button class="secondary" onclick="needTime()">I Need Some Time 🧸</button>
+</div>
+
+<div class="card hidden" id="surprise">
+ <div class="heart">💞</div>
+ <h1>Thank You, Tamannu!</h1>
+ <p id="finalMessage">
+ You mean so much to me.
+ Thank you for hearing me out. 💗
+ </p>
+ <p>Lots of love and one more sincere sorry. 🥺</p>
+ <div style="font-size:35px">🌷 🧸 🌷</div>
+</div>
+
+<script>
+function openLetter(){
+ main.classList.add('hidden');
+ letter.classList.remove('hidden');
+}
+function showQuestion(){
+ letter.classList.add('hidden');
+ question.classList.remove('hidden');
+}
+function forgiven(){
+ question.classList.add('hidden');
+ surprise.classList.remove('hidden');
+}
+function needTime(){
+ document.getElementById('finalMessage').innerText =
+ "That's okay, Tamannu. Take all the time you need. I'll respect your feelings. 💗";
+ question.classList.add('hidden');
+ surprise.classList.remove('hidden');
+}
+function hearts(){
+ const h=document.createElement('div');
+ h.className='floating';
+ h.innerText=['💗','💕','🌸','💖','🧸'][Math.floor(Math.random()*5)];
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(18+Math.random()*20)+'px';
+ h.style.animationDuration=(5+Math.random()*5)+'s';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),10000);
+}
+setInterval(hearts,600);
+</script>
+</body>
+</html>
